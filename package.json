@@ -4,6 +4,8 @@
   "description": "This is all React",
   "main": "App.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -17,6 +19,8 @@
   },
   "homepage": "https://github.com/Shubham02022002/React-App#readme",
   "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "parcel": "^2.10.3",
     "process": "^0.11.10"
   },
