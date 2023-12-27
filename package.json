@@ -1,0 +1,30 @@
+{
+  "name": "namestereact",
+  "version": "1.0.0",
+  "description": "This is all React",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shubham02022002/React-App.git"
+  },
+  "author": "Shubham Chaudhary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shubham02022002/React-App/issues"
+  },
+  "homepage": "https://github.com/Shubham02022002/React-App#readme",
+  "devDependencies": {
+    "parcel": "^2.10.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
