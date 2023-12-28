@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import logo from "./images/food-village.jpeg";
+import logo from "../images/food-village.jpeg";
 
 const Title = () => (
   <h1 id="heading3" key={"h3"}>
