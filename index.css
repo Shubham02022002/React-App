@@ -39,6 +39,11 @@
     display: flex;
     overflow: visible;
     overflow-wrap: anywhere;
-    justify-content:space-evenly;
+    justify-content:space-around;
     flex-wrap: wrap;
+}
+
+.search-container{
+    margin: 2px;
+    display: flex;
 }
