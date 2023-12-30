@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import logo from "../../images/food-village.jpeg";
+
+const loggedInUser=()=>{
+  return false;
+}
 
 export const Title = () => (
     <h1 id="heading3" key={"h3"}>
@@ -6,6 +12,9 @@ export const Title = () => (
     </h1>
 );
 const Header = () => {
+
+  const [isLoggedIn,setIsLoggedIn]=useState(false);
+
   return (
     <div className="header">
       <Title />
@@ -17,6 +26,11 @@ const Header = () => {
           <li>Cart</li>
         </ul>
       </div>
+     {isLoggedIn?<button onClick={()=>{
+      setIsLoggedIn(false)
+     }}>Logout</button>:<button onClick={()=>{
+      setIsLoggedIn(true)
+     }}>Login</button>}
     </div>
   );
 };

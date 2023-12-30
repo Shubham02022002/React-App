@@ -1,43 +1,60 @@
-import { resturantList } from "../config";
+// import { resturantList } from "../config";
 import ResturantCard from "./RresturantCard";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
-
-function filterData(searchText, resturants) {
-  return resturants.filter((resturant) =>
-    resturant.info.name.includes(searchText)
+function filterData(searchText, restaurantsData) {
+  return restaurantsData.filter((resturant) =>
+    resturant.info.name.toLowerCase().includes(searchText.toLowerCase())
   );
 }
+
 const Body = () => {
-  const [resturants, setResturants] = useState(resturantList);
+  const [loading,setLoading]=useState(true);
+  const [allResturants,setAllResturants]=useState([]);
+  const [filteredResturants, setFilteredResturants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  useEffect(()=>{
+  useEffect(() => {
     getResturants();
-  },[]);
+  }, []);
 
-  // async function getResturants(){
-  //   const data=fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6126255&lng=77.04108959999999&page_type=DESKTOP_WEB_LISTING");
-  //   const json= (await data).json();
-  //   console.log(json);
-  //   setResturants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-  // }
-  async function getResturants(){
+  async function getResturants() {
     try {
-      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6126255&lng=77.04108959999999&page_type=DESKTOP_WEB_LISTING");
+      const response = await fetch(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6126255&lng=77.04108959999999&page_type=DESKTOP_WEB_LISTING"
+      );
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
       const json = await response.json();
-      // console.log(json);
-      setResturants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      const restaurantsData =
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || [];
+      setAllResturants(restaurantsData);
+      setFilteredResturants(restaurantsData);
     } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
+      console.error("There was a problem with the fetch operation:", error);
+    }finally{
+      setLoading(false);
     }
+  }
+
+  if(loading)return(
+    <>
+     <Shimmer/>
+    </>
+  )
+ 
+
+  if(filteredResturants.length===0&&searchText!=''){
+    return(
+      <h1>No Restuarnt Found</h1>
+    )
   }
   
 
-  return (
+  return(
     <>
       <div className="search-container">
         <input
@@ -53,15 +70,23 @@ const Body = () => {
         <button
           className="search-btn"
           onClick={() => {
-            setResturants(filterData(searchText, resturants));
+            setFilteredResturants(filterData(searchText, allResturants));
           }}
         >
           Search
         </button>
       </div>
       <div className="resturant-list">
-        {resturants.map((resturant) => {
-          return <ResturantCard {...resturant.info} key={resturant.info.id} />;
+        
+        {filteredResturants.map((resturant) => {
+          return (
+            <ResturantCard
+              {...resturant.info}
+              key={
+                resturant.info.id
+              }
+            />
+          );
         })}
       </div>
     </>
