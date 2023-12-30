@@ -2,6 +2,7 @@
 import ResturantCard from "./RresturantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 function filterData(searchText, restaurantsData) {
   return restaurantsData.filter((resturant) =>
@@ -10,8 +11,8 @@ function filterData(searchText, restaurantsData) {
 }
 
 const Body = () => {
-  const [loading,setLoading]=useState(true);
-  const [allResturants,setAllResturants]=useState([]);
+  const [loading, setLoading] = useState(true);
+  const [allResturants, setAllResturants] = useState([]);
   const [filteredResturants, setFilteredResturants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
@@ -35,26 +36,23 @@ const Body = () => {
       setFilteredResturants(restaurantsData);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
-    }finally{
+    } finally {
       setLoading(false);
     }
   }
 
-  if(loading)return(
-    <>
-     <Shimmer/>
-    </>
-  )
- 
+  if (loading)
+    return (
+      <>
+        <Shimmer />
+      </>
+    );
 
-  if(filteredResturants.length===0&&searchText!=''){
-    return(
-      <h1>No Restuarnt Found</h1>
-    )
+  if (filteredResturants.length === 0 && searchText != "") {
+    return <h1>No Restuarnt Found</h1>;
   }
-  
 
-  return(
+  return (
     <>
       <div className="search-container">
         <input
@@ -77,15 +75,14 @@ const Body = () => {
         </button>
       </div>
       <div className="resturant-list">
-        
         {filteredResturants.map((resturant) => {
           return (
-            <ResturantCard
-              {...resturant.info}
-              key={
-                resturant.info.id
-              }
-            />
+            <Link
+              to={"/resturant/" + resturant.info.id}
+              key={resturant.info.id}
+            >
+              <ResturantCard {...resturant.info} />
+            </Link>
           );
         })}
       </div>

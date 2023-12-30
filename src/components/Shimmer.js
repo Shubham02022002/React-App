@@ -1,14 +1,14 @@
-const Shimmer = ()=>{
-    console.log("inside shimmer");
-    return(
-        <>
-        <div className="shimmer-wrapper">
-            <div className="shimmer">
-                
-                <h1>Loading</h1>
-            </div>
-        </div>
-        </>
-    )
-}
+const Shimmer = () => {
+  return (
+    <>
+      <div className="resturant-list">
+        {Array(10)
+          .fill("")
+          .map((e,index) => (
+            <div key={index}className="shimmer-card"></div>
+          ))}
+      </div>
+    </>
+  );
+};
 export default Shimmer;
