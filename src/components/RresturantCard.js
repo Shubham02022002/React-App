@@ -8,8 +8,8 @@ const ResturantCard = ({ cloudinaryImageId, name, cuisines}) => {
             cloudinaryImageId
           }
         ></img>
-        <h2>{name}</h2>
-        <h3>{cuisines.join(", ")}</h3>
+        <h3>{name}</h3>
+        <h4>{cuisines.join(", ")}</h4>
       </div>
     );
   };

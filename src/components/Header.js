@@ -3,6 +3,7 @@ import { useState } from "react";
 import logo from "../../images/food-village.jpeg";
 import NavigationBar from "./NavigationBar";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 export const Title = () => {
   return (
@@ -17,18 +18,14 @@ export const Title = () => {
 };
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const isOnline=useOnline();
   return (
     <div className="header">
       <Title />
       <div className="nav-items">
-        {/* <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Connect</li>
-          <li>Cart</li>
-        </ul> */}
+       
         <NavigationBar />
+        <h1>{isOnline?"✅ONLINE":"❌OFFLINE"}</h1>
         {isLoggedIn ? (
           <button
             onClick={() => {

@@ -1,12 +1,24 @@
-import Footer from "./Footer";
-import Header from "./Header";
-const About=()=>{
-    return(
-        <>
-        {/* <Header/> */}
-        <h1>Inside About</h1>
-        {/* <Footer/> */}
-        </>
-    )
+import React from "react";
+import ProfileClass from "./ProfileClass";
+import { Component } from "react";
+
+class About extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInfo: {
+        name: "DummyName",
+      },
+    };
+  }
+
+  componentDidMount() {}
+  render() {
+    return (
+      <>
+        <ProfileClass />
+      </>
+    );
+  }
 }
-export default About
+export default About;

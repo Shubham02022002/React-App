@@ -3,23 +3,20 @@ import ResturantCard from "./RresturantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
-function filterData(searchText, restaurantsData) {
-  return restaurantsData.filter((resturant) =>
-    resturant.info.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-}
+
 
 const Body = () => {
   const [loading, setLoading] = useState(true);
   const [allResturants, setAllResturants] = useState([]);
   const [filteredResturants, setFilteredResturants] = useState([]);
   const [searchText, setSearchText] = useState("");
-
   useEffect(() => {
     getResturants();
   }, []);
-
+  
   async function getResturants() {
     try {
       const response = await fetch(
@@ -30,17 +27,23 @@ const Body = () => {
       }
       const json = await response.json();
       const restaurantsData =
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || [];
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      ?.restaurants
+  
       setAllResturants(restaurantsData);
-      setFilteredResturants(restaurantsData);
+      setFilteredResturants(restaurantsData)
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     } finally {
       setLoading(false);
     }
   }
-
+  const isOnline=useOnline();
+  if(!isOnline){
+    return(
+      <h1>You are offilen</h1>
+    )
+  }
   if (loading)
     return (
       <>
@@ -48,7 +51,7 @@ const Body = () => {
       </>
     );
 
-  if (filteredResturants.length === 0 && searchText != "") {
+  if (filteredResturants?.length === 0 && searchText != "") {
     return <h1>No Restuarnt Found</h1>;
   }
 
@@ -75,7 +78,7 @@ const Body = () => {
         </button>
       </div>
       <div className="resturant-list">
-        {filteredResturants.map((resturant) => {
+        {filteredResturants?.map((resturant) => {
           return (
             <Link
               to={"/resturant/" + resturant.info.id}

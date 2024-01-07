@@ -7,6 +7,7 @@ const NavigationBar=()=>{
             <li> <Link to="/about">About</Link></li>
             <li><Link to="/cart">Cart</Link></li>
             <li><Link to="/connect">Connect</Link></li>
+            <li><Link to="/instamart">InstaMart</Link></li>
             </ul>
         </nav>
         </>

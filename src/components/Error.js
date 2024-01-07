@@ -5,10 +5,10 @@ const Error=()=>{
     console.log(err);
     return(
         <>
-        <h1>Oops!!</h1>
+        <h1>Oops!!</h1> 
         <h2>Something went wrong..</h2>
         <img className="errorImg" src={errImg}></img>
-        
+        <h1>{err.status+ " "+err.statusText}</h1>
         </>
     )
 }
