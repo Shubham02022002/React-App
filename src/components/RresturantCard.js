@@ -1,7 +1,7 @@
 import { IMG_CDN_URL } from "../config";
 const ResturantCard = ({ cloudinaryImageId, name, cuisines}) => {
     return (
-      <div className="card">
+      <div className="w-[200]">
         <img 
           src={
             IMG_CDN_URL +

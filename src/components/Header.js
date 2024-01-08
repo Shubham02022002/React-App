@@ -10,7 +10,7 @@ export const Title = () => {
     <>
     <Link to="/">
       <h1 id="heading3" key={"h3"}>
-        <img className="logo" src={logo}></img>
+        <img className="h-20 p-2 rounded-xl" src={logo}></img>
       </h1>
       </Link>
     </>
@@ -20,14 +20,14 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isOnline=useOnline();
   return (
-    <div className="header">
+    <div className="flex justify-between bg-sky-300 shadow-xl rounded">    
       <Title />
-      <div className="nav-items">
+      <div className="flex">
        
         <NavigationBar />
-        <h1>{isOnline?"✅ONLINE":"❌OFFLINE"}</h1>
+        <h1 className="flex">{isOnline?"✅ONLINE":"❌OFFLINE"}</h1>
         {isLoggedIn ? (
-          <button
+          <button className="flex justify-between"
             onClick={() => {
               setIsLoggedIn(false);
             }}

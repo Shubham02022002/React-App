@@ -57,10 +57,10 @@ const Body = () => {
 
   return (
     <>
-      <div className="search-container">
+      <div className="rounded p-2 my-3 bg-sky-300 shadow-lg">
         <input
           id="search-field"
-          className="search-input"
+          className="rounded-xl"
           type="text"
           placeholder="Serach"
           value={searchText}
@@ -69,12 +69,12 @@ const Body = () => {
           }}
         ></input>
         <button
-          className="search-btn"
+          className="rounded-md p-2 m-2 bg-yellow-400 text-white"
           onClick={() => {
             setFilteredResturants(filterData(searchText, allResturants));
           }}
         >
-          Search
+           Search
         </button>
       </div>
       <div className="resturant-list">
