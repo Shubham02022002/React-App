@@ -27,9 +27,9 @@ const Body = () => {
       }
       const json = await response.json();
       const restaurantsData =
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
       ?.restaurants
-  
+      console.log(json?.data?.cards);
       setAllResturants(restaurantsData);
       setFilteredResturants(restaurantsData)
     } catch (error) {
@@ -77,10 +77,10 @@ const Body = () => {
            Search
         </button>
       </div>
-      <div className="resturant-list">
+      <div className="m-2 grid grid-cols-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1">
         {filteredResturants?.map((resturant) => {
           return (
-            <Link
+            <Link className="bg-blue-300 m-2"
               to={"/resturant/" + resturant.info.id}
               key={resturant.info.id}
             >

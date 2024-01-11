@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
-      <div className="footer">
-        <ul>
+      <div className="m-2">
+        <ul className="flex justify-between">
           <li>Delhi</li>
           <li>Agra</li>
           <li>Bengaluru</li>
