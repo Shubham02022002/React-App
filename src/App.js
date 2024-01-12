@@ -9,6 +9,8 @@ import Error from "./components/Error";
 import ResturantMenu from "./components/ResturantMenu";
 import Connect from "./components/Connect";
 import ProfileClass from "./components/ProfileClass";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -29,11 +31,13 @@ const AppLayout = () => {
   })
   return (
     <>
-    <UserContext.Provider value={{user:user}}>
+    <Provider store={store}>
+    <UserContext.Provider value={{user:user,setUser:setUser}}>
       <Header></Header>
       <Outlet />
       <Footer></Footer>
       </UserContext.Provider>
+      </Provider>
     </>
   );
 };
@@ -71,6 +75,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/instamart",
         element:<Suspense fallback={<Shimmer/>}> <InstaMart/></Suspense> 
+      },
+      {
+        path:"/cart",
+        element:<Cart/>
       }
     ],
   },
