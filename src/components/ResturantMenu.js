@@ -11,7 +11,7 @@ const ResturantMenu = () => {
   const { id } = useParams();
 
   const dispatch = useDispatch();
-  const addFoodItem =(item   )=>{
+  const addFoodItem =(item)=>{
     dispatch(addItem(item));
   }
   const resturant = useRestaurant(id);

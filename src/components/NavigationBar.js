@@ -4,7 +4,6 @@ import store from "../utils/store";
 const NavigationBar=()=>{
 
     const cartItems=useSelector(store=>store.cart.items);
-    console.log(cartItems);
     return(
         <>
         <nav className="nav-links">
