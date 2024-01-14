@@ -1,5 +1,5 @@
 // import { resturantList } from "../config";
-import ResturantCard from "./RresturantCard";
+import ResturantCard from "./ResturantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -57,10 +57,10 @@ const Body = () => {
 
   return (
     <>
-      <div className="rounded p-2 my-3 bg-sky-300 shadow-lg">
-        <input
+      <div className="rounded p-2 my-3">
+        <input 
           id="search-field"
-          className="rounded-xl"
+          className="rounded-xl p-2 shadow-md text-black"
           type="text"
           placeholder="Serach"
           value={searchText}
@@ -69,7 +69,7 @@ const Body = () => {
           }}
         ></input>
         <button
-          className="rounded-md p-2 m-2 bg-yellow-400 text-white"
+          className="rounded-md p-2 m-2 shadow-md text-black"
           onClick={() => {
             setFilteredResturants(filterData(searchText, allResturants));
           }}
@@ -80,7 +80,7 @@ const Body = () => {
       <div className="m-2 grid grid-cols-5 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-1">
         {filteredResturants?.map((resturant) => {
           return (
-            <Link className="bg-blue-300 m-2"
+            <Link className=" flex justify-center shadow-md m-2"
               to={"/resturant/" + resturant.info.id}
               key={resturant.info.id}
             >

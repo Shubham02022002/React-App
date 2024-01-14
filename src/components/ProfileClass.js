@@ -20,19 +20,23 @@ class ProfileClass extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h1>Hey, Welcome to this amazing website</h1>
-        <img
+      <div className=" mb-16">
+        <h1 className="p-2 m-2 text-center text-2xl">Hello, We deliver Quality Food</h1>
+        <div className="flex">
+        <img className=" object-center relative inset-0 flex rounded-full m-2"
           style={{
             height: "40vh",
-            border: "1px solid black",
-            padding: "1px",
-            borderRadius: "5px",
+            border: "2px solid black",
+            padding: "2px",
           }}
           src={this?.state?.userInfo?.avatar_url}
         ></img>
-        <h2>Name:{this.state.userInfo.name}</h2>
-        <h3>Loacation:{this.state.userInfo.location}</h3>
+        <div className="mt-16 ml-10">
+        <h2 className="text-lg text-center ">Name: {this.state.userInfo.name}</h2>
+        <h3 className="text-center mb-5">Loacation: {this.state.userInfo.location}</h3>
+        <h3> I'm a Developer. FoodVillage is developed by me. </h3>
+        </div>
+        </div>
       </div>
     );
   }

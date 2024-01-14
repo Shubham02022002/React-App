@@ -17,13 +17,10 @@ import {
   Link,
   Outlet, 
 } from "react-router-dom";
-import ResturantCard from "./components/RresturantCard";
+import ResturantCard from "./components/ResturantCard";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
-// import InstaMart from "./components/InstaMart";
-
-const InstaMart=lazy(()=>  import("./components/InstaMart"));
 const AppLayout = () => {
   const [user,setUser]=useState({
     name:"Shubham",
@@ -71,10 +68,6 @@ const appRouter = createBrowserRouter([
       {
         path:"/resturant/:id",
         element:<ResturantMenu/>
-      },
-      {
-        path:"/instamart",
-        element:<Suspense fallback={<Shimmer/>}> <InstaMart/></Suspense> 
       },
       {
         path:"/cart",

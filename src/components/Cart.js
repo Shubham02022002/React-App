@@ -8,12 +8,12 @@ const Cart = () => {
     dispatch(clearCart());
   };
   return (
-    <div className="font-bold text 3xl">
-      <h1>cart items-{cartItems.lenght}</h1>
-      <button className="bg-blue-300 p-2 m-3" onClick={() => handleClearCart()}>
+    <div className="font-bold min-h-[80vh] text 3xl">
+      <h1 className="text-2xl">Cart items {cartItems.lenght}</h1>
+      <button className=" shadow-md p-2 m-3" onClick={() => handleClearCart()}>
         Clear Cart
       </button>
-      <div className="flex">
+      <div className="flex flex-wrap justify-evenly items-center">
         {cartItems.map((items) => (
           <FoodItem
             name={items.card.info.name}

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import logo from "../../images/food-village.jpeg";
+import logo from "../../images/burger.png";
 import NavigationBar from "./NavigationBar";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
@@ -11,7 +11,7 @@ export const Title = () => {
     <>
     <Link to="/">
       <h1 id="heading3" key={"h3"}>
-        <img className="h-20 p-2 rounded-xl" src={logo}></img>
+        <img className="h-20 p-2 ml-3 rounded-xl" src={logo}></img>
       </h1>
       </Link>
     </>
@@ -22,13 +22,13 @@ const Header = () => {
   const isOnline=useOnline();
   const {user}=useContext(UserContext);
   return (
-    <div className="flex justify-between bg-sky-300 shadow-xl rounded">    
+    <div className="flex mb-2 justify-between shadow-md rounded">    
       <Title />
       <div className="flex">
        
         <NavigationBar />
-        <h1 className="flex m-5">{isOnline?"✅":"❌"}</h1>
-        <span className="p-10 font-bold text-blue-600">{user.name}</span>
+        <h1 className="flex m-5">{isOnline?"Online":"Offline"}</h1>
+        <span className="p-4">{user.name}</span>
         {isLoggedIn ? (
           <button className="flex justify-between"
             onClick={() => {
@@ -38,7 +38,7 @@ const Header = () => {
             Logout
           </button>
         ) : (
-          <button
+          <button className="flex justify-between mt-4 mr-3"
             onClick={() => {
               setIsLoggedIn(true);
             }}

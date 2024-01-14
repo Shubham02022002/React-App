@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-      <div className="m-2">
+      <div className="m-2 ">
         <ul className="flex justify-between">
           <li>Delhi</li>
           <li>Agra</li>
