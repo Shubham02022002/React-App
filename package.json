@@ -2,7 +2,7 @@
   "name": "namestereact",
   "version": "1.0.0",
   "description": "This is all React",
-  "main": "./src/App.js",
+  "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
