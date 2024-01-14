@@ -30,7 +30,7 @@ const Header = () => {
         <h1 className="flex m-5">{isOnline?"Online":"Offline"}</h1>
         <span className="p-4">{user.name}</span>
         {isLoggedIn ? (
-          <button className="flex justify-between"
+          <button className="flex justify-between mt-4 mr-3"
             onClick={() => {
               setIsLoggedIn(false);
             }}
